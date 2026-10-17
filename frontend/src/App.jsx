@@ -146,7 +146,7 @@ Responsibilities:
       if (reposRes.length > 0) setSelectedRepo(reposRes[0]);
     } catch (err) {
       console.error(err);
-      setError("Failed to fetch initial backend state. Ensure backend service is reachable.");
+      setError("Failed to fetch initial backend state. Ensure FastAPI server is running on port 8000.");
     } finally {
       setLoading(false);
     }
@@ -243,7 +243,7 @@ Responsibilities:
       let msg = err.message || "";
       const isNetworkError = err.name === 'TypeError' && (msg.toLowerCase() === 'failed to fetch' || msg.includes('networkerror') || msg === 'load failed');
       if (isNetworkError) {
-        msg = "Backend server is not reachable. Please verify the backend service is running.";
+        msg = "Backend server is not reachable. Please verify the backend API server is running on port 8000.";
       }
       setFeedback({ type: 'error', message: `Error summarizing job URL: ${msg}` });
     } finally {
@@ -296,7 +296,7 @@ Responsibilities:
       let msg = err.message || "";
       const isNetworkError = err.name === 'TypeError' && (msg.toLowerCase() === 'failed to fetch' || msg.includes('networkerror') || msg === 'load failed');
       if (isNetworkError) {
-        msg = "Backend server is not reachable. Please verify the backend service is running.";
+        msg = "Backend server is not reachable. Please verify the backend API server is running on port 8000.";
       }
       setFeedback({ type: 'error', message: `Error summarizing job text: ${msg}` });
     } finally {
@@ -349,7 +349,7 @@ Responsibilities:
       let msg = err.message || "";
       const isNetworkError = err.name === 'TypeError' && (msg.toLowerCase() === 'failed to fetch' || msg.includes('networkerror') || msg === 'load failed');
       if (isNetworkError) {
-        msg = "Backend server is not reachable. Please verify the backend service is running.";
+        msg = "Backend server is not reachable. Please verify the backend API server is running on port 8000.";
       }
       setFeedback({ type: 'error', message: `Error parsing job requirements: ${msg}` });
     } finally {
@@ -690,42 +690,42 @@ Responsibilities:
                 </div>
 
                 <div className="glass-panel" style={{
-                    padding: '16px 20px',
-                    marginBottom: 24,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: 16,
-                    background: 'linear-gradient(135deg, rgba(225, 29, 72, 0.05), rgba(99, 102, 241, 0.05))',
-                    border: '1px solid rgba(225, 29, 72, 0.2)'
-                  }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
-                        <Calendar size={22} />
+                  padding: '16px 20px',
+                  marginBottom: 24,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: 16,
+                  background: 'linear-gradient(135deg, rgba(225, 29, 72, 0.05), rgba(99, 102, 241, 0.05))',
+                  border: '1px solid rgba(225, 29, 72, 0.2)'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                    <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', flexShrink: 0 }}>
+                      <Calendar size={22} />
+                    </div>
+                    <div>
+                      <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-main)' }}>
+                        Personalized 15-Day Implementation Roadmap Available
                       </div>
-                      <div>
-                        <div style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-main)' }}>
-                          Personalized 15-Day Implementation Roadmap Available
-                        </div>
-                        <div style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
-                          Custom step-by-step daily code milestones tailored to your {assessmentResult.repo_full_name} gaps with verified video references.
-                        </div>
+                      <div style={{ fontSize: '0.84rem', color: 'var(--text-muted)' }}>
+                        Custom step-by-step daily code milestones tailored to your {assessmentResult.repo_full_name} gaps with verified video references.
                       </div>
                     </div>
-                    <button
-                      onClick={() => navigate('/roadmap')}
-                      className="btn btn-primary"
-                      style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.88rem' }}
-                    >
-                      <Calendar size={16} /> View 15-Day Roadmap <ChevronRight size={16} />
-                    </button>
                   </div>
+                  <button
+                    onClick={() => navigate('/roadmap')}
+                    className="btn btn-primary"
+                    style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '0.88rem' }}
+                  >
+                    <Calendar size={16} /> View 15-Day Roadmap <ChevronRight size={16} />
+                  </button>
+                </div>
 
-                  {/* Skill Assessments List */}
-                  <h2 style={{ fontSize: '1.25rem', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <Layers size={20} color="var(--accent-primary)" /> Skill Breakdown & Verified Citations
-                  </h2>
+                {/* Skill Assessments List */}
+                <h2 style={{ fontSize: '1.25rem', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Layers size={20} color="var(--accent-primary)" /> Skill Breakdown & Verified Citations
+                </h2>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                   {assessmentResult.skill_assessments?.map(skill => {

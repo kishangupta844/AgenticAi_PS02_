@@ -92,8 +92,8 @@ export default function RepoCombobox({
     const cleanRaw = raw.replace(/\s*\([^)]*\)\s*-\s*SHA:.*$/i, '').trim();
     if (!cleanRaw) return combinedRepos;
     const matchBase = cleanRaw.split(' ')[0];
-    return combinedRepos.filter(r => 
-      r.full_name.toLowerCase().includes(cleanRaw) || 
+    return combinedRepos.filter(r =>
+      r.full_name.toLowerCase().includes(cleanRaw) ||
       (matchBase && r.full_name.toLowerCase().includes(matchBase))
     );
   }, [combinedRepos, inputValue]);
@@ -359,7 +359,7 @@ export default function RepoCombobox({
         }}
       >
         <GitBranch size={16} color="var(--text-muted)" style={{ marginRight: 8, flexShrink: 0 }} />
-        
+
         <input
           ref={inputRef}
           id="select-repo-combobox"
@@ -452,15 +452,15 @@ export default function RepoCombobox({
 
       {/* Inline Error Message */}
       {hasError && (
-        <div 
+        <div
           id="repo-combobox-error"
           role="alert"
-          style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: 6, 
-            fontSize: '0.78rem', 
-            color: 'var(--status-unmet)', 
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            fontSize: '0.78rem',
+            color: 'var(--status-unmet)',
             marginTop: 5,
             paddingLeft: 8
           }}

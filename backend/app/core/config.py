@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -6,12 +5,38 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 _ROOT_ENV = Path(__file__).resolve().parents[3] / ".env"
 _BACKEND_ENV = Path(__file__).resolve().parents[2] / ".env"
 
-_DEFAULT_DB = "sqlite:////tmp/career_coach.db" if os.environ.get("VERCEL") else "sqlite:///./career_coach.db"
-
 class Settings(BaseSettings):
     PROJECT_NAME: str = "TrueSkill"
     API_V1_STR: str = "/api/v1"
-    DATABASE_URL: str = _DEFAULT_DB
+    DATABASE_URL: str = "sqlite:///./career_coach.db"
+    
+    @property
+    def resolved_database_url(self) -> str:
+        url = self.DATABASE_URL
+        import os
+        import shutil
+        import tempfile
+        is_serverless = bool(os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
+        if is_serverless and "sqlite" in url:
+            tmp_db = os.path.join(tempfile.gettempdir(), "career_coach.db")
+            if not os.path.exists(tmp_db):
+                candidates = [
+                    _BACKEND_ENV.parent / "career_coach.db",
+                    _ROOT_ENV.parent / "career_coach.db",
+                    _ROOT_ENV.parent / "backend" / "career_coach.db",
+                    Path("/var/task/backend/career_coach.db"),
+                    Path("/var/task/career_coach.db"),
+                ]
+                for cand in candidates:
+                    if cand.exists():
+                        try:
+                            shutil.copy2(str(cand), tmp_db)
+                            break
+                        except Exception:
+                            pass
+            norm_path = tmp_db.replace("\\", "/")
+            return f"sqlite:///{norm_path}"
+        return url
     
     # API Keys & Webhook Secrets
     GEMINI_API_KEY: str = ""
@@ -38,6 +63,8 @@ class Settings(BaseSettings):
     
     # CORS
     CORS_ORIGINS: list[str] = [
+        "http://localhost:2314",
+        "http://127.0.0.1:2314",
         "http://localhost:8755",
         "http://127.0.0.1:8755",
         "http://localhost:2222",
