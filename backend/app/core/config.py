@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -5,10 +6,12 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 _ROOT_ENV = Path(__file__).resolve().parents[3] / ".env"
 _BACKEND_ENV = Path(__file__).resolve().parents[2] / ".env"
 
+_DEFAULT_DB = "sqlite:////tmp/career_coach.db" if os.environ.get("VERCEL") else "sqlite:///./career_coach.db"
+
 class Settings(BaseSettings):
     PROJECT_NAME: str = "TrueSkill"
     API_V1_STR: str = "/api/v1"
-    DATABASE_URL: str = "sqlite:///./career_coach.db"
+    DATABASE_URL: str = _DEFAULT_DB
     
     # API Keys & Webhook Secrets
     GEMINI_API_KEY: str = ""

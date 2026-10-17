@@ -146,7 +146,7 @@ Responsibilities:
       if (reposRes.length > 0) setSelectedRepo(reposRes[0]);
     } catch (err) {
       console.error(err);
-      setError("Failed to fetch initial backend state. Ensure FastAPI server is running on port 8000.");
+      setError("Failed to fetch initial backend state. Ensure backend service is reachable.");
     } finally {
       setLoading(false);
     }
@@ -243,7 +243,7 @@ Responsibilities:
       let msg = err.message || "";
       const isNetworkError = err.name === 'TypeError' && (msg.toLowerCase() === 'failed to fetch' || msg.includes('networkerror') || msg === 'load failed');
       if (isNetworkError) {
-        msg = "Backend server is not reachable. Please verify the backend API server is running on port 8000.";
+        msg = "Backend server is not reachable. Please verify the backend service is running.";
       }
       setFeedback({ type: 'error', message: `Error summarizing job URL: ${msg}` });
     } finally {
@@ -296,7 +296,7 @@ Responsibilities:
       let msg = err.message || "";
       const isNetworkError = err.name === 'TypeError' && (msg.toLowerCase() === 'failed to fetch' || msg.includes('networkerror') || msg === 'load failed');
       if (isNetworkError) {
-        msg = "Backend server is not reachable. Please verify the backend API server is running on port 8000.";
+        msg = "Backend server is not reachable. Please verify the backend service is running.";
       }
       setFeedback({ type: 'error', message: `Error summarizing job text: ${msg}` });
     } finally {
@@ -349,7 +349,7 @@ Responsibilities:
       let msg = err.message || "";
       const isNetworkError = err.name === 'TypeError' && (msg.toLowerCase() === 'failed to fetch' || msg.includes('networkerror') || msg === 'load failed');
       if (isNetworkError) {
-        msg = "Backend server is not reachable. Please verify the backend API server is running on port 8000.";
+        msg = "Backend server is not reachable. Please verify the backend service is running.";
       }
       setFeedback({ type: 'error', message: `Error parsing job requirements: ${msg}` });
     } finally {

@@ -26,7 +26,7 @@ export default function RepoCombobox({
   selectedRepo,
   onChange,
   onValidationChange,
-  apiBase = "http://127.0.0.1:8000/api/v1"
+  apiBase = "/api/v1"
 }) {
   const [inputValue, setInputValue] = useState('');
   const [isOpen, setIsOpen] = useState(false);
