@@ -1,0 +1,106 @@
+{
+  "fastapi": {
+    "title": "FastAPI Official Documentation & Tutorial",
+    "url": "https://fastapi.tiangolo.com/tutorial/",
+    "type": "docs",
+    "channel_or_site": "FastAPI Docs",
+    "level": "all",
+    "why_relevant": "The comprehensive official step-by-step guide to FastAPI routing, dependency injection, and Pydantic schemas."
+  },
+  "python": {
+    "title": "Python 3 Official Tutorial",
+    "url": "https://docs.python.org/3/tutorial/",
+    "type": "docs",
+    "channel_or_site": "Python.org",
+    "level": "all",
+    "why_relevant": "Core language reference covering modern Python semantics, data structures, and standard library modules."
+  },
+  "react": {
+    "title": "React Documentation - Quick Start",
+    "url": "https://react.dev/learn",
+    "type": "docs",
+    "channel_or_site": "React.dev",
+    "level": "all",
+    "why_relevant": "Interactive official guide to React components, state, hooks, and modern frontend architecture."
+  },
+  "docker": {
+    "title": "Docker Getting Started Guide",
+    "url": "https://docs.docker.com/get-started/",
+    "type": "docs",
+    "channel_or_site": "Docker Docs",
+    "level": "all",
+    "why_relevant": "Hands-on guide to containerizing backend applications, writing Dockerfiles, and multi-stage builds."
+  },
+  "kubernetes": {
+    "title": "Kubernetes Basics & Tutorials",
+    "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+    "type": "docs",
+    "channel_or_site": "Kubernetes Docs",
+    "level": "all",
+    "why_relevant": "Official Kubernetes walkthrough for deploying, scaling, and managing containerized services."
+  },
+  "postgresql": {
+    "title": "PostgreSQL Official Documentation",
+    "url": "https://www.postgresql.org/docs/current/tutorial.html",
+    "type": "docs",
+    "channel_or_site": "PostgreSQL Docs",
+    "level": "all",
+    "why_relevant": "Standard relational database tutorial covering schema design, indexing, constraints, and SQL queries."
+  },
+  "redis": {
+    "title": "Redis Getting Started & Data Structures",
+    "url": "https://redis.io/docs/latest/develop/get-started/",
+    "type": "docs",
+    "channel_or_site": "Redis Docs",
+    "level": "all",
+    "why_relevant": "In-memory caching, message broker semantics, and distributed locking patterns."
+  },
+  "pytest": {
+    "title": "pytest Documentation & Getting Started",
+    "url": "https://docs.pytest.org/en/stable/getting-started.html",
+    "type": "docs",
+    "channel_or_site": "pytest Docs",
+    "level": "all",
+    "why_relevant": "Comprehensive testing framework guide covering fixtures, assertions, parametrize, and mock testing."
+  },
+  "graphql": {
+    "title": "Introduction to GraphQL",
+    "url": "https://graphql.org/learn/",
+    "type": "docs",
+    "channel_or_site": "GraphQL.org",
+    "level": "all",
+    "why_relevant": "Query language specification and architectural patterns for flexible, typed APIs."
+  },
+  "ci/cd": {
+    "title": "GitHub Actions Documentation",
+    "url": "https://docs.github.com/en/actions",
+    "type": "docs",
+    "channel_or_site": "GitHub Docs",
+    "level": "all",
+    "why_relevant": "Automated workflow pipelines, testing integration, and continuous deployment workflows."
+  },
+  "sqlmodel": {
+    "title": "SQLModel Official Tutorial",
+    "url": "https://sqlmodel.tiangolo.com/tutorial/",
+    "type": "docs",
+    "channel_or_site": "SQLModel Docs",
+    "level": "all",
+    "why_relevant": "SQL databases in Python with Pydantic and SQLAlchemy integration."
+  },
+  "rust": {
+    "title": "The Rust Programming Language Book",
+    "url": "https://doc.rust-lang.org/book/",
+    "type": "docs",
+    "channel_or_site": "Rust-Lang",
+    "level": "all",
+    "why_relevant": "The definitive book on memory safety, concurrency, and high-performance systems programming in Rust."
+  },
+  "typescript": {
+    "title": "TypeScript for JavaScript Programmers",
+    "url": "https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes.html",
+    "type": "docs",
+    "channel_or_site": "TypeScript Docs",
+    "level": "all",
+    "why_relevant": "Type system fundamentals, interfaces, generics, and compile-time type verification."
+  }
+}
